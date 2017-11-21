@@ -11,12 +11,14 @@ var users = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/cursonode', { userMongoCliente: true}, (err) =>{
+mongoose.connect('mongodb://localhost/cursonode', { userMongoClient: true}, (err) =>{
   if(err){
     console.log(err);
   }
   console.log('Conectado a mongo.');
 });
+
+require('./models/TVShow')(app, mongoose);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
