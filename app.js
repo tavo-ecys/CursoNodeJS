@@ -6,19 +6,21 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+require('./models/TVShow')(app, mongoose);
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/cursonode', { userMongoClient: true}, (err) =>{
+
+mongoose.connect('mongodb://localhost/cursonode', { useMongoClient: true}, (err) =>{
   if(err){
     console.log(err);
   }
   console.log('Conectado a mongo.');
 });
 
-require('./models/TVShow')(app, mongoose);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

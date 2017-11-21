@@ -5,5 +5,5 @@ module.exports = (app, mongoose) => {
         pais: {type: String}
     });
 
-    mongoose.model('TVSHOW', TVShowSchema);
+    mongoose.model('TVShow', TVShowSchema);
 }
