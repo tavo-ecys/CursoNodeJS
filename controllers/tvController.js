@@ -27,7 +27,12 @@ const todos = (tvshows) => {
 
 obj.getArray = (req, res, next) => {
     TVShow.find()
-    .then(tvshows => todos(tvshows))
+    .then(tvshows => {
+        if(tvshows.length > 0){
+            return Promise.reject('arreglo mayor a 0');
+        }
+        return todos(tvshows);
+    })
     .then(resultado => res.send(resultado))
     .catch(err => res.send({error: err}));
     /*todos()
