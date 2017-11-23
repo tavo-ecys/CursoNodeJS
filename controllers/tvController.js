@@ -25,11 +25,12 @@ const tvShows = [
 ];
 
 obj.getArray = (req, res, next)=>{
-    TVShow.find((err, tvshows) => {
-        if(err){
-            return res.send({error: err});
-        }
-        res.send(tvshows);
+    TVShow.find()
+    .then(tvshows => {
+        return res.send(tvshows);
+    })
+    .catch(err => {
+        return res.send({error: err});
     });
 };
 
@@ -48,6 +49,7 @@ obj.postArray = (req, res, next)=>{
 
         res.send(result);
     });
+    
 };
 
 obj.getById = (req, res, next) => {
